@@ -20,19 +20,19 @@ int main(int argc, char* argv[])
 	process = fork(); // fork the process we made
 
  	if (process < 0) {  // if fork == -1
-		 perror(argv[0]); // perror with command used in args
-     exit(1);
-  }
+		perror(argv[0]); // perror with command used in args
+     		exit(1);
+  	}
 
 	// child process is 0
 	if (process == 0) {
 		int pid = getpid(); //getpid returns pid number
 		std::cout << "Child process pid is " << pid << std::endl; // output
 		execvp(argv[1], &argv[1]); // execute args
-    if ((execvp(argv[1], &argv[1])) < 0) {  // if execvp == -1
+    		if ((execvp(argv[1], &argv[1])) < 0) {  // if execvp == -1
 		    perror(argv[0]);
-        exit(1);
-    }
+        		exit(1);
+	    	}
 	} else {  // parent process > 0
 		wait(NULL);  // wait for child process to stop
 		int pid = getpid();
