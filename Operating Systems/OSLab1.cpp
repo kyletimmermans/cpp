@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	process = fork(); // fork the process we made
 
  	if (process < 0) {  // if fork == -1
-		perror(argv[0]); // perror with command used in args
+		perror(argv[1]); // perror with command used in args
      		exit(1);
   	}
 
@@ -30,7 +30,7 @@ int main(int argc, char* argv[])
 		std::cout << "Child process pid is " << pid << std::endl; // output
 		execvp(argv[1], &argv[1]); // execute args
     		if ((execvp(argv[1], &argv[1])) < 0) {  // if execvp == -1
-		    perror(argv[0]);
+		    perror(argv[1]);
         		exit(1);
 	    	}
 	} else {  // parent process > 0
